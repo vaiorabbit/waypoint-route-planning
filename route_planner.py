@@ -88,17 +88,22 @@ class RoutePlanner:
         while frontier_list:
             frontier_list.sort(key=lambda n: n.distance_estimated)
             current_route = frontier_list.pop(0)
-            dist_so_far = current_route.distance_actual
-            explored_list.append(current_route)
             if current_route.way_point == goal_wp:
                 break
+            dist_so_far = current_route.distance_actual
+            explored_list.append(current_route)
             for edge in current_route.way_point.neighbors:
                 # TODO : Check edge/wai_point availability here
                 wp_neighbor = edge.opposite(current_route.way_point)
                 if not wp_neighbor.reachable:
                     continue
-                if any(x for x in explored_list if x.way_point == wp_neighbor) or any(x for x in frontier_list if x.way_point == wp_neighbor):
+                if any(x for x in explored_list if x.way_point == wp_neighbor):
                     continue
+                if any(x for x in frontier_list if x.way_point == wp_neighbor):
+                    n = [x for x in frontier_list if x.way_point == wp_neighbor][0]
+                    if n.distance_actual <= current_route.distance_actual + edge.distance:
+                        continue
+
                 new_node = Route(wp_neighbor)
                 new_node.prev_route = current_route
                 current_route.next = new_node
