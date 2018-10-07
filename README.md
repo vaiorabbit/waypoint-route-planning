@@ -5,17 +5,21 @@
 *   Created : 2018-05-20
 *   Last modified : 2018-05-20
 
+<img src="https://raw.githubusercontent.com/vaiorabbit/waypoint-route-planning/master/doc/demo00.png" width="400"> <img src="https://raw.githubusercontent.com/vaiorabbit/waypoint-route-planning/master/doc/demo01.png" width="400">
+
 ## Requirement ##
 
-*   SDL2
-*   SDL2_gfx
+*   SDL2 DLL
+    *   https://www.libsdl.org/
+*   SDL2_gfx DLL
+    *   http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
 
 ## Usage ##
 
 $ python demo.py road_map_invader.txt
 
-*   Left Click : Set new start position
-*   Right Click : Set new goal position
+*   Left Click : Set new start position (Blue)
+*   Right Click : Set new goal position (Red)
 *   ESC : Exit this application
 
 ## Reference ##
